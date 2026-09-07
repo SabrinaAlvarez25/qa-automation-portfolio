@@ -182,8 +182,14 @@ Encontrar un elemento no es todavía comprobar que la aplicación hace lo que pr
 Completa esta sección siguiendo `Tarea-S5-Consigna.md`:
 
 1. ¿Qué línea abre la página?
+La línea `await page.goto(LOGIN_URL);` abre la página.
 2. ¿Qué tres locators se crean?
+Se crean tres locators: `email`, `password` y `submit`.
 3. ¿Qué se comprueba primero: cantidad o visibilidad?
-4. ¿Qué palabra se repite antes de las acciones y comprobaciones?
+Primero se comprueba la cantidad y después la visibilidad.
 
-> Creo que `await` sirve para ____________. En S5 lo comprobaremos ejecutando el código.
+4. ¿Qué palabra se repite antes de las acciones y comprobaciones?
+La palabra que se repite es `await`.
+
+> Creo que `await` sirve para esperar a que acción termine antes de continuar. En S5 lo comprobaremos ejecutando el código.
+
