@@ -1,22 +1,15 @@
-# Evidencia de validación — S1 · semilla
-
-> Reemplaza esta versión por tu evidencia de S1. Si faltaste, completa estas cuatro líneas.
-> **Son cuatro líneas, no un informe.**
+# Evidencia de validación — S1 
 
 ## Lo que rechacé
 
-Rechacé esta afirmación de la IA: _______________________________________________
+Rechacé esta afirmación de la IA: una vez transcurridos los 15 minutos de bloqueo, el usuario puede ingresar al panel con credenciales válidas.
 
-Porque no aparece en: __________________________________________________________
-*(nombra dónde buscaste: la historia, el criterio 2, la documentación. «Busqué y no aparece» es un
-resultado, no un hueco en blanco)*
+Porque no aparece en: la historia ni en los criterios de aceptación.
 
 ## Lo que elevo
 
-La pregunta que no voy a responder yo: ________________________________________
-
-*(«¿cuánto dura el código?» sirve. «falta información» no sirve.)*
+La pregunta que no voy a responder yo: ¿La cuenta se desbloquea automáticamente al cumplirse los 15 minutos?
 
 ## La prueba de que la decisión está tomada
 
-Puedo explicar en una frase por qué no la acepté: ______________________________
+Puedo explicar en una frase por qué no la acepté: la fuente indica que el bloqueo dura 15 minutos, pero no especifica qué sucede después ni si el desbloqueo es automático.
