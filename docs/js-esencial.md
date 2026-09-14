@@ -26,25 +26,27 @@ npx playwright test tests/orden-ejecucion.spec.ts -g "confirma el orden"
 
 **Orden de los tres mensajes que predigo antes de ejecutar:**
 
-1.
-2.
-3.
+1. antes de esperar
+2. operación terminada
+3. después de esperar
 
 **Orden de los tres mensajes observado en la terminal:**
 
-1.
-2.
-3.
+1. antes de esperar
+2. operación terminada
+3. después de esperar
 
 **¿Coincidieron? ¿Qué corregí?**
+Sí, coincidieron. No tuve que corregir el orden.
 
 ## 3. Experimento controlado
 
-- Línea donde retiré temporalmente `await`:
-- Resultado esperado:
-- Resultado real:
-- Por qué falló o cambió:
-- Evidencia de que restauré el archivo y volvió a verde:
+- Línea donde retiré temporalmente `await`:  `expect(submit).toBeVisible();`
+- Resultado esperado: comprobar qué ocurre al quitar `await` de la comprobación de visibilidad.
+- Resultado real:el test terminó correctamente y mostró `1 passed`. Los mensajes de la terminal mantuvieron el mismo orden.
+
+- Por qué falló o cambió: no produjo un fallo en este caso. El experimento permitió observar que retirar `await` no necesariamente hace que el test falle; la comprobación ya no queda esperada de la misma manera.
+- Evidencia de que restauré el archivo y volvió a verde:  restauré `await` y ejecuté `npm test -- tests/orden-ejecucion.spec.ts`, obteniendo `2 passed`.
 
 **Comando de cierre para comprobar el archivo completo:**
 
@@ -112,12 +114,9 @@ con lo que ya sé?**
 
 ### Lo que todavía no entiendo
 
-Los términos que la IA marcó como fuera de tu vocabulario. Esta lista es tu plan de estudio, y crece
-por huecos detectados trabajando, no por copiar teoría.
+No se realizó la consulta 4b de explicación del error, por lo que no se identificaron términos nuevos en esa actividad.
 
-| Término | Qué tendría que entender primero | ¿Ya lo resolví? |
-|---|---|---|
-|  |  |  |
+
 
 ## 5. Gate humano
 
@@ -137,3 +136,39 @@ por huecos detectados trabajando, no por copiar teoría.
 
 En un agente de IDE o CLI puedes señalar el archivo. En una aplicación de chat debes pegar el
 fragmento y ejecutar el test por tu cuenta. No se requieren subagentes para leer un único flujo.
+
+## 7. Preparación para S6 — Leer una solicitud y una respuesta
+
+### Mis predicciones
+
+| Concepto | Mi predicción | Estado |
+|---|---|---|
+| request | Predicción: creo que es algo que se envía desde un sistema hacia otro para solicitar o realizar alguna acción. | Predicción |
+| response | Predicción: creo que es la respuesta que devuelve un sistema después de recibir una request. | Predicción |
+| método | Predicción: creo que indica qué tipo de acción se quiere realizar con la request. | Predicción |
+| status | Predicción: creo que indica el resultado de la request, por ejemplo si salió bien o si hubo algún problema. | Predicción |
+| header | Predicción: creo que contiene información adicional que acompaña a la request o a la response. | Predicción |
+
+### Qué definiciones requieren comprobación
+
+Estas definiciones son solamente predicciones. Debo comprobarlas con una fuente adecuada o con una ejecución cuando corresponda.
+
+| Concepto | ¿Necesita fuente o ejecución para confirmarlo? |
+|---|---|
+| request | Pendiente de comprobar |
+| response | Pendiente de comprobar |
+| método | Pendiente de comprobar |
+| status | Pendiente de comprobar |
+| header | Pendiente de comprobar |
+
+### Resultado de la revisión del agente
+
+El agente revisó mis cinco predicciones sin modificar archivos.
+
+- **request:** puede confirmarse con documentación. La ejecución permite identificar sus partes en un caso real.
+- **response:** puede confirmarse con documentación.
+- **método:** puede confirmarse con documentación.
+- **status:** puede confirmarse con documentación. La ejecución permite observar el código concreto recibido.
+- **header:** puede confirmarse con documentación. La ejecución permite observar headers reales.
+
+Las cinco predicciones fueron consideradas adecuadas como punto de partida. La siguiente comprobación práctica será observar una request y una response reales.
