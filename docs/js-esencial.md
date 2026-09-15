@@ -3,8 +3,9 @@
 ## Test observado
 
 - Archivo: `tests/orden-ejecucion.spec.ts`
-- Fecha:
-- Responsable:
+- Fecha: 14/09/2026
+- Responsable: Sabrina Alvarez
+
 
 ## 1. Mapa de lectura
 
@@ -88,6 +89,7 @@ Código:
 **Antes de pegar nada, escribe tu predicción:**
 
 - Creo que la IA me va a explicar el error diciendo que:
+ la espera de cantidad falló porque encontró 1 locator en vez de los 99 esperados.
 
 ```text
 Esta tabla es mi mapa de lectura del test. Es mi vocabulario: solo entiendo estos términos.
@@ -110,12 +112,13 @@ El error:
 con lo que ya sé?**
 
 - **¿Coincidió con mi predicción?**
+si
 - **¿En qué punto tuve que releer?**
-
+Al ver que el timeout fue de 5000ms intentando resolver el locator.
 ### Lo que todavía no entiendo
+Received: valor real encontrado en la pantalla en ese momento (1).
 
-No se realizó la consulta 4b de explicación del error, por lo que no se identificaron términos nuevos en esa actividad.
-
+Timeout: tiempo límite de paciencia (5 segundos) antes de rendirse la espera.
 
 
 ## 5. Gate humano
