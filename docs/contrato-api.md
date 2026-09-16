@@ -151,23 +151,29 @@ reducirse en 1."*
 > corrige el documento para que cierre, y no se decide quién tiene razón. Esa decisión no es de QA.
 > **La detección sí.**
 
-**Verificación:** ejecutada por `________` el `________` con `curl / DevTools / Postman`.
-Casos ejecutados: `___` de 5.
+**Verificación:** ejecutada por `Sabrina Alvarez` el `16/09/2026` con `curl`.
+
+Casos ejecutados: `5` de 5.
 
 **Registro mínimo de ejecución:** marca cada caso que ejecutes. Si coincide, no copies otra vez la
 regla completa; registra el caso, la fecha y el resultado.
 
 | Caso | Fecha | Resultado |
 |---|---|---|
-| 1 | | coincide / discrepancia |
-| 2 | | coincide / discrepancia |
-| 3 | | coincide / discrepancia |
-| 4 | | coincide / discrepancia |
-| 5 | | coincide / discrepancia |
+| 1 | 2026-09-16 | discrepancia |
+| 2 | 2026-09-16 | coincide |
+| 3 | 2026-09-16 | discrepancia |
+| 4 | 2026-09-16 | discrepancia |
+| 5 | 2026-09-16 | discrepancia |
 
-| # | Endpoint y dato | Lo que dice el contrato (REQ) | Lo que respondió el producto | Cómo lo verifiqué | Fecha |
+
+| Caso | Petición | Contrato | Producto | Fuente | Fecha |
 |---|---|---|---|---|---|
-| | | | | | |
+| 1 | `POST /api/enroll` con `{"courseId":"fundamentos"}` | `200` — inscrito · REQ-A03 | `500 Internal Server Error` | `curl` | `2026-09-16` | 
+| 3 | `POST /api/enroll` con `{"courseId":"no-existe"}` | `404` — Curso no encontrado · REQ-A03 | `500 Internal Server Error` | `curl` | `2026-09-16` |
+| 4 | `POST /api/enroll` con `{"courseId":"api-testing"}` | `200` — lista de espera · REQ-A03 · REQ-C02 | `500 Internal Server Error` | `curl` | `2026-09-16` |
+| 5 | `POST /api/enroll` con `{"courseId":"playwright-cero"}` | `403` — rechazo por prerequisito pendiente · REQ-A03 · REQ-C03 · REQ-C06 | `500 Internal Server Error` | `curl` | `2026-09-16` |
+
 
 **Formato de una fila bien escrita** — es un ejemplo, no es tu hallazgo:
 
@@ -191,9 +197,9 @@ citada con número · fecha.** Ninguna de las cinco es opinión.
 > **Discrepancia** = la spec dice una cosa y el producto hace otra.
 > **Incógnita** = la spec no dice nada y tú observaste algo.
 
--
--
--
+- `POST /api/enroll` sin sesión/cookie: el contrato no define si este endpoint requiere autenticación ni qué status debería devolver. Al ejecutarlo el 2026-09-16 con `curl`, el producto respondió `500 Internal Server Error`. **Incógnita:** comportamiento de autenticación no definido en el contrato.
+-- `GET /api/enroll`: el contrato documenta `POST /api/enroll`, pero no define qué debería responder ante un método no documentado. Al ejecutarlo el 2026-09-16 con `curl`, el producto respondió `405 Method Not Allowed`. **Incógnita:** comportamiento ante un método HTTP no documentado.
+-- `POST /api/enroll` con JSON mal formado: el contrato indica que el endpoint recibe un body JSON, pero no define qué debería responder ante un JSON inválido. Al ejecutarlo el 2026-09-16 con `curl`, el producto respondió `500 Internal Server Error`. **Incógnita:** comportamiento ante un body JSON mal formado.
 
 Si te cuesta arrancar, estas preguntas suelen destapar algo:
 
