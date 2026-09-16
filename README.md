@@ -1,35 +1,48 @@
+[README (1).md](https://github.com/user-attachments/files/32303902/README.1.md)
 # QA Automation Portfolio
 
-Proyecto acumulativo de la Ruta QA Automation con IA.
+![Playwright Tests](https://github.com/SabrinaAlvarez25/qa-automation-portfolio/actions/workflows/playwright.yml/badge.svg)
 
-## Qué demuestra hoy
+Suite de tests end-to-end con **Playwright + TypeScript**, con integración continua en GitHub Actions.
 
-- Puedo instalar, configurar y ejecutar un proyecto Playwright.
-- Puedo separar preparación de asincronía con mapas de lectura y gates humanos.
-- Puedo leer la evidencia empírica de un fallo antes de corregirlo (`Timeout`, `Received`, `Expected`).
-- Puedo estructurar predicciones y auditorías para la capa de red HTTP (`request`, `response`, `status`, `header`).
-- Puedo restaurar el verde (`2 passed`) y guardar trazabilidad limpia con Git.
+## Qué demuestra este proyecto
 
-## Comandos
+- Diseño y automatización de tests E2E con Playwright, usando el patrón **Page Object Model**.
+- Diagnóstico de fallos a partir de evidencia empírica (`Timeout`, `Received`, `Expected`) antes de aplicar una corrección.
+- Validación de la capa de red HTTP: estructura y auditoría de `request`, `response`, `status` y `headers`.
+- Manejo de asincronía y control del orden de ejecución en flujos de test.
+- Trazabilidad limpia del trabajo con Git y CI automatizado en cada push.
 
-```bash
+## Stack
+
+- **Automation:** Playwright, TypeScript
+- **CI/CD:** GitHub Actions
+- **Prácticas:** Page Object Model, control de versiones, diagnóstico de fallos basado en evidencia
+
+## Cómo correrlo
+
+```
 npm install
 npx playwright install chromium
 npm test
 ```
 
-## Recursos de trabajo
+## Estructura del repo
 
-- `docs/prompt-template.md`: estructura para dirigir una solicitud a la IA.
-- `docs/flujo-ia-diagnostico-fallos.md`: flujo para analizar un fallo, validar la propuesta y autorizar solamente un cambio mínimo.
+- `tests/` — casos de prueba automatizados
+- `pages/` — Page Objects
+- `docs/` — documentación de proceso y flujos de trabajo
+- `evidence/` — registros de validación por sesión de trabajo
 
-## Historia del proyecto
+## Historial de avances
 
-| Sesión | Aporte | Evidencia |
-|---|---|---|
-| S1 | Criterio para validar salidas de IA | `evidence/s1-validacion-ia.md` |
-| S2 | Primer ciclo reproducible y Git | `tests/primer-ciclo.spec.ts` + historial Git |
-| S4 | Lectura en orden, control asíncrono y glosario de errores |docs/js-esencial.md + tests/orden-ejecucion.spec.ts
-| S6 | Mapeo conceptual y auditoría de Request/Response HTTP | docs/js-esencial.md 
+| Etapa | Qué se sumó | Detalle |
+| ----- | ----------- | ------- |
+| 1 | Primer ciclo de test reproducible | `tests/primer-ciclo.spec.ts` |
+| 2 | Control de asincronía y orden de ejecución | `tests/orden-ejecucion.spec.ts` |
+| 3 | Auditoría de capa HTTP (request/response) | `docs/js-esencial.md` |
+| 4 | CI con GitHub Actions | `.github/workflows/playwright.yml` |
 
+## Cómo trabajo
 
+Uso herramientas de IA como apoyo para acelerar el diagnóstico y la escritura de tests, pero cada salida se valida manualmente antes de aplicarse — ver `docs/flujo-ia-diagnostico-fallos.md` para el criterio de validación que sigo.
