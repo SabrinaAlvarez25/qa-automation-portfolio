@@ -292,3 +292,20 @@ producto.
   endpoints**: solo conoce los que están acá.
 - Un caso que hoy no tiene fuente es un test que en C15 no vas a poder escribir. Y decirlo también es
   una respuesta profesional: *"no puedo verificar esto porque el contrato no lo define"*.
+
+
+## 10. Candidatos a probar — lista cruda
+
+> Escrita por QA. Lista sin ordenar y sin priorizar: se ordena en S7.
+
+- POST /api/enroll con courseId "fundamentos" devuelve 200 y status "inscrito".
+- POST /api/enroll con body vacío devuelve 400 con el mensaje "El campo courseId es obligatorio".
+- POST /api/enroll con courseId "no-existe" devuelve 404 con el mensaje "Curso no encontrado".
+- POST /api/enroll con courseId "api-testing" devuelve 200 y status "lista-espera".
+- POST /api/enroll con courseId "playwright-cero" devuelve 403 por prerequisito pendiente.
+- POST /api/enroll sin sesión o cookie definida en el contrato.
+- GET /api/enroll para comprobar qué ocurre con un método no documentado.
+- POST /api/enroll con JSON mal formado.
+- GET /api/auth/me para comprobar qué respuesta devuelve un endpoint existente pero no documentado.
+- GET /api/progress para comprobar qué respuesta devuelve un endpoint existente pero no documentado.
+
