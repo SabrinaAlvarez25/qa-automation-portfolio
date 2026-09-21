@@ -59,18 +59,24 @@ enseña justo lo contrario de lo que dice.
 
 ### Reglas mías que deberían estar siempre encendidas
 
-> Cosas que le repetiste a la IA más de una vez entre C1 y C7, en pedidos de temas distintos.
-
--
--
--
+* No inventar información que no está en la documentación o en lo que le entregué a la IA; si falta un dato, indicarlo como faltante.
+* No tomar como válida una propuesta de la IA solamente porque parece correcta: comprobarla con la fuente, el sistema o la ejecución.
+* Si hay una discrepancia entre lo documentado y lo que devuelve el sistema, señalarla y verificarla antes de asumir cuál de las dos es correcta.
+* Cuando trabajamos con código o selectores, explicar qué hace la propuesta y comprobar que realmente funciona antes de darla por válida.
 
 ### Cosas que hice más de una vez y que todavía no son skill
 
-> Procedimientos que repetiste. Una de estas va a ser tu **segunda skill**, y en C8 la vas a
-> empaquetar sin que nadie te lleve de la mano.
+* Darle a la IA un problema de QA y después comprobar la respuesta con evidencia del proyecto o del sistema.
+* Probar locators de Playwright en la aplicación y verificar que encuentran el elemento esperado.
+* Ejecutar una prueba de Playwright, revisar el resultado y corregir el problema a partir de la evidencia de la ejecución.
+* Revisar documentación o un contrato de API y contrastarlo con el comportamiento real mediante una ejecución.
+* Usar una propuesta de la IA como punto de partida y modificarla después de verificarla.
 
--
+---
+
+*Semilla entregada en C7 con cuatro reglas · se cosecha entero en C8.*
+
+
 -
 -
 

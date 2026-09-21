@@ -171,3 +171,29 @@ ni los límites, ni el criterio de terminado**.
 *Primera skill de `qa-automation-portfolio`. Nace en C7, empaquetando un procedimiento que se ejecutó
 a mano tres veces en la misma clase. Se revisa cuando cambian los criterios de
 `docs/estrategia-automatizacion.md` §2.*
+
+## Bitácora de corridas
+
+### Corrida del 21/09/2026
+
+* **Qué le pasé:**
+
+  * T02 — Login con contraseña incorrecta — fuente: REQ-L02.
+  * T15 — Redirección al dashboard — fuente: REQ-L11.
+  * Contexto de `docs/estrategia-automatizacion.md §1`.
+
+* **Qué devolvió bien:**
+
+  * Incluyó los dos candidatos proporcionados y no agregó candidatos nuevos.
+  * Mantuvo `SIN CONTEXTO` cuando faltaba información del equipo.
+  * Indicó qué datos faltaban para completar los criterios sin contexto.
+  * No calculó Total ni Zona cuando faltaba información.
+  * Incluyó las dos listas separadas que pide el criterio de terminado.
+
+* **Qué tuve que corregirle a mano después:**
+
+  * La salida indicó ubicaciones concretas para algunas fuentes que debían verificarse antes de considerarlas trazables. La fuente debe comprobarse en el repositorio y no asumirse solamente por la referencia del candidato.
+
+* **Qué línea le agregaría a la sección 4 (límites) para que no vuelva a pasar:**
+
+  * No des por verificada una fuente solo porque el candidato incluye una referencia: comprueba que el archivo, REQ u observación exista y sea trazable; si no puede verificarse, indícalo como dato pendiente y no inventes su ubicación.
