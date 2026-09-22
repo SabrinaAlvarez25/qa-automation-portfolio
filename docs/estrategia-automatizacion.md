@@ -2,8 +2,8 @@
 
 **Sistema bajo prueba:** `https://playground.calidadsinhumo.com`
 **Especificación:** `https://playground.calidadsinhumo.com/documentacion`
-**Fecha de esta versión:**
-**Responsable:**
+**Fecha de esta versión:** 21/09/2026
+**Responsable:** Sabrina Alvarez
 
 > Este archivo **no es un ejercicio de clase**. Es el backlog que dirige lo que se construye desde
 > C10: cuando abras Playwright, el primer test sale de la sección 5 de este archivo.
@@ -199,14 +199,14 @@ cambian los pasos, ni los límites, ni el criterio de terminado: cambia dónde v
 
 ## 8. Gate humano
 
-- [ ] Cada ítem del backlog tiene su fuente: archivo, REQ o fila. Ninguno dice "se me ocurrió".
-- [ ] Cada ítem tiene decisión **y** razón escritas por mí, no por la skill.
-- [ ] Cada celda que la skill marcó `SIN CONTEXTO` está resuelta, o dice qué dato falta y a quién se lo voy a pedir.
-- [ ] Hay al menos un descarte con su razón y con qué se hace en su lugar.
-- [ ] La columna «qué cambiaría mi decisión» está llena en los tres primeros.
-- [ ] Puedo defender el orden de la sección 5 delante de alguien que proponga otro.
-- [ ] La firma de la sección 3 está completa, con fecha y con el número de filas firmadas.
-- [ ] No hay ni una línea de código de test en este archivo. Eso empieza en C10.
+- [x] Cada ítem del backlog tiene su fuente: archivo, REQ o fila. Ninguno dice "se me ocurrió".
+- [x] Cada ítem tiene decisión **y** razón escritas por mí, no por la skill.
+- [x] Cada celda que la skill marcó `SIN CONTEXTO` está resuelta, o dice qué dato falta y a quién se lo voy a pedir.
+- [x] Hay al menos un descarte con su razón y con qué se hace en su lugar.
+- [x] La columna «qué cambiaría mi decisión» está llena en los tres primeros.
+- [x] Puedo defender el orden de la sección 5 delante de alguien que proponga otro.
+- [x] La firma de la sección 3 está completa, con fecha y con el número de filas firmadas.
+- [x] No hay ni una línea de código de test en este archivo. Eso empieza en C10.
 
 **La prueba de la reunión:** si alguien señala una fila y pregunta *"¿por qué esto va antes que
 aquello?"*, la respuesta tiene que ser una razón escrita, no *"lo puso la IA"* ni *"sumó más"*.

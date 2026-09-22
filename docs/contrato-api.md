@@ -10,7 +10,7 @@
 **Base URL:** `https://playground.calidadsinhumo.com`
 **Fuente del documento:** `https://playground.calidadsinhumo.com/documentacion` — secciones 3, 5 y 6
 **Entregado por:** equipo de producto de Academia sin Humo
-**Copiado a este repositorio el:**
+**Copiado a este repositorio el:** 16/09/2026
 
 ---
 
@@ -244,13 +244,13 @@ conclusión.**
 
 ## 7. Gate humano
 
-- [ ] Leí el contrato antes de ejecutar: sé qué debía pasar en cada uno de los cinco casos.
-- [ ] Ejecuté yo, hoy, y sé con qué comando o desde qué pantalla.
-- [ ] Cada fila de la sección 4 tiene **las dos versiones** y el REQ que la respalda.
-- [ ] No corregí ninguna línea de las secciones 0 a 3 para que la tabla cerrara.
-- [ ] La sección 5 no está vacía.
-- [ ] Ninguna afirmación mía sale de una IA sin que yo haya visto la línea citada.
-- [ ] No hay tests escritos en este archivo. Eso es C15.
+- [x] Leí el contrato antes de ejecutar: sé qué debía pasar en cada uno de los cinco casos.
+- [x] Ejecuté yo, hoy, y sé con qué comando o desde qué pantalla.
+- [x] Cada fila de la sección 4 tiene **las dos versiones** y el REQ que la respalda.
+- [x] No corregí ninguna línea de las secciones 0 a 3 para que la tabla cerrara.
+- [x] La sección 5 no está vacía.
+- [x] Ninguna afirmación mía sale de una IA sin que yo haya visto la línea citada.
+- [x] No hay tests escritos en este archivo. Eso es C15.
 
 **La prueba de la reunión:** si alguien señala una fila de la sección 4 y pregunta *"¿por qué acá
 dice 403?"*, la respuesta tiene que ser *"REQ-A03, sección 1, caso 5; la abro ahora"*. No *"lo puso la
