@@ -3,8 +3,8 @@
 **Sistema bajo prueba:** `https://playground.calidadsinhumo.com/login`
 **Historia:** `docs/HU-login.md` (HU-LOG-01, criterios CA1 a CA4)
 **Especificación:** `https://playground.calidadsinhumo.com/documentacion`, sección 2
-**Fecha:**
-**Responsable:**
+**Fecha:** 22/09/2026
+**Responsable: Sabrina Alvarez
 
 > **Qué es este archivo y de dónde salió.** Es el resultado de las cinco capas de ATERRIZA que se
 > corrieron en C8, en pantalla, con la IA: **un pedido por capa** y, después de cada salida, **el gate
