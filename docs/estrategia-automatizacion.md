@@ -2,7 +2,7 @@
 
 **Sistema bajo prueba:** `https://playground.calidadsinhumo.com`
 **Especificación:** `https://playground.calidadsinhumo.com/documentacion`
-**Fecha de esta versión:** 21/09/2026
+**Fecha de esta versión:** 23/09/2026
 **Responsable:** Sabrina Alvarez
 
 > Este archivo **no es un ejercicio de clase**. Es el backlog que dirige lo que se construye desde
@@ -124,6 +124,33 @@ Esto no es una formalidad. Firmar quiere decir que si dentro de un mes alguien p
 **Lo que NO firmo todavía, y qué dato me falta:**
 
 > No firmo todavía los puntajes que dependan de información del equipo que no está documentada en el repositorio.
+
+### Corrida S9 — Priorización de los 8 casos de login
+
+La skill `priorizar-automatizacion` fue ejecutada sobre los 8 casos de `docs/casos-login.md` el 23/09/2026.
+
+| # | Candidato                                   | Fuente                                | Frec | Estab        | Riesgo | Mant         | Total | Zona | Decisión (mía)                                                             | Razón (mía)                                                                                                                               | Qué cambiaría mi decisión                                                                            |
+| - | ------------------------------------------- | ------------------------------------- | ---: | ------------ | -----: | ------------ | ----- | ---- | -------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| 1 | Login con credenciales válidas              | CA4 · REQ-L04 · `docs/casos-login.md` |    3 | SIN CONTEXTO |      3 | SIN CONTEXTO | —     | —    | AUTOMATIZAR DESPUÉS DE confirmar contexto necesario                        | Es un flujo crítico de acceso y valida el inicio de sesión correcto y el mensaje de bienvenida.                                           | Confirmar estabilidad, frecuencia de ejecución, datos de prueba y mantenimiento.                     |
+| 2 | Contraseña incorrecta                       | CA2 · REQ-L02                         |    3 | SIN CONTEXTO |      3 | SIN CONTEXTO | —     | —    | AUTOMATIZAR DESPUÉS DE confirmar contexto necesario                        | Es un escenario de autenticación y permite verificar que un intento inválido no permita el acceso.                                        | Confirmar estabilidad, frecuencia de ejecución, datos de prueba y mantenimiento.                     |
+| 3 | Email no registrado                         | CA2 · REQ-L02                         |    3 | SIN CONTEXTO |      3 | SIN CONTEXTO | —     | —    | AUTOMATIZAR DESPUÉS DE confirmar contexto necesario                        | Es un escenario de autenticación que debe impedir el acceso con un usuario no registrado.                                                 | Confirmar estabilidad, frecuencia de ejecución, datos de prueba y mantenimiento.                     |
+| 4 | Quinto intento fallido y bloqueo            | CA3 · REQ-L03                         |    3 | SIN CONTEXTO |      3 | SIN CONTEXTO | —     | —    | AUTOMATIZAR DESPUÉS DE confirmar contexto y datos para resetear el bloqueo | Verifica una regla de seguridad importante del login.                                                                                     | Confirmar cómo preparar y resetear los intentos fallidos en cada ambiente.                           |
+| 5 | Cuarto intento fallido sin bloqueo          | CA3 · REQ-L03                         |    3 | SIN CONTEXTO |      3 | SIN CONTEXTO | —     | —    | AUTOMATIZAR DESPUÉS DE confirmar contexto y datos para resetear el bloqueo | Permite comprobar el límite anterior al bloqueo definido por la historia.                                                                 | Confirmar cómo preparar y resetear los intentos fallidos en cada ambiente.                           |
+| 6 | Final del bloqueo cuando el timer llega a 0 | CA3 · REQ-L03                         |    3 | SIN CONTEXTO |      2 | SIN CONTEXTO | —     | —    | AUTOMATIZAR DESPUÉS DE confirmar contexto y forma de controlar la espera   | Verifica que el botón se habilite exactamente cuando termina el bloqueo.                                                                  | Confirmar si existe una forma controlada de evitar esperas fijas y cómo mantener el caso.            |
+| 7 | Email vacío                                 | CA1 · REQ-L01                         |    3 | SIN CONTEXTO |      1 | SIN CONTEXTO | —     | —    | PROBAR A MANO                                                              | Es un caso de bajo riesgo y la comprobación es simple. Por ahora no justifica automatización inmediata sin conocer el valor de regresión. | Automatizar si comienza a fallar con frecuencia o si el equipo lo incorpora como chequeo recurrente. |
+| 8 | Contraseña vacía                            | CA1 · REQ-L01                         |    3 | SIN CONTEXTO |      1 | SIN CONTEXTO | —     | —    | PROBAR A MANO                                                              | Es un caso de bajo riesgo y la comprobación es simple. Por ahora no justifica automatización inmediata sin conocer el valor de regresión. | Automatizar si comienza a fallar con frecuencia o si el equipo lo incorpora como chequeo recurrente. |
+
+**Puntajes:** fueron propuestos por la skill. Estabilidad y mantenimiento quedan como `SIN CONTEXTO`, por lo que no se calcula Total ni Zona.
+
+**Casos que por ahora no considero necesario automatizar:** los casos 7 y 8 pueden probarse manualmente porque son validaciones simples y de bajo riesgo. Esta decisión podría cambiar si el equipo informa que son escenarios frecuentes de regresión.
+
+### Firma de la corrida S9
+
+* **Firmo yo:** Sabrina Alvarez
+* **Fecha:** 23/09/2026
+* **Filas decididas y firmadas:** 8 de 8
+* **Puntajes propuestos por:** `.agents/skills/priorizar-automatizacion/SKILL.md`
+* **Observación:** no cierro Total ni Zona porque faltan datos de estabilidad y mantenimiento.
 
 >
 ## 4. Los descartes, con su razón

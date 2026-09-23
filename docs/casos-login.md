@@ -80,6 +80,7 @@ Diez reglas: dos de CA1, tres de CA2 (una implícita), cuatro de CA3, una de CA4
 | P3 | Si dejo un campo vacío, ¿qué veo: un mensaje, el botón deshabilitado o el aviso del navegador? | «Ambos son obligatorios» | qué se observa en los casos 7 y 8 |
 | P4 | ¿Un login exitoso en medio de los fallos reinicia el contador? ¿Los intentos se cuentan por email o por navegador? | «5 intentos fallidos consecutivos» | cómo se preparan los casos 4, 5 y 6 |
 | P5 | Si los cinco intentos son con un email que no existe, ¿qué cuenta se bloquea? | «la cuenta se bloquea» | **ningún caso posible** hasta que se conteste |
+| P6 | Que cuentas de prueba debe utilizarse para validar el login en cada ambiente? | No surge de la historia | que cuentas de prueba usar y en que ambiente|
 
 > **Gate E** *(el que se aplicó en clase)*. Cada pregunta cita su fragmento · se contesta con un dato,
 > no con «depende» · si se contesta leyendo la historia, no era una pregunta.

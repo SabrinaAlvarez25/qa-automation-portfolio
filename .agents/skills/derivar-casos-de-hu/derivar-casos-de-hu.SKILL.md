@@ -126,3 +126,26 @@ Si una prueba no pasa, no se repite el pedido con otras palabras: **se corrige l
 
 *Segunda skill de `qa-automation-portfolio`. Nació en C8, empaquetando los cinco pedidos y los gates
 con los que se derivaron los casos del login.*
+
+## Bitácora de corridas
+
+### Corrida del 23/09/2026 · sobre HU-login.md
+
+* **Un caso que encontró y yo no:** separó como casos independientes ambos campos vacíos, el botón deshabilitado durante el bloqueo, la observación del timer y la habilitación del botón cuando el timer llega a 0.
+
+* **Un caso mío que no encontró:** no encontró una separación equivalente a mi caso 5 como estaba planteado: cuarto intento fallido para comprobar que todavía no se bloquea.
+
+* **¿Inventó algún texto o comportamiento que la historia no dice?** Sí. Agregó detalles como “inicia en 30 o cercano”, “sin retardo visible” y algunas condiciones de comportamiento que no están especificadas literalmente en la historia.
+
+* **Qué línea le agrego a la sección 4 (límites) para que no vuelva a pasar:**
+
+* **(mía)** No agregar tiempos aproximados, tolerancias ni comportamientos de interfaz que la historia no indique literalmente; si son necesarios para el caso, dejarlos como `POR CONFIRMAR`.
+
+Cómo revisé las salidas
+Comparé los casos generados con los 8 casos que ya tenía en docs/casos-login.md.
+Revisé que los fragmentos citados aparecieran literalmente en docs/HU-login.md.
+Revisé que los resultados esperados no agregaran textos o comportamientos que la historia no especificara.
+La pregunta que encontró el problema más importante
+
+¿El resultado esperado está respaldado literalmente por la historia o la skill está agregando un comportamiento que la historia no especifica?
+
