@@ -18,6 +18,16 @@ Suite profesional de pruebas automatizadas **End-to-End (UI)** y **API Testing**
 - **Flujos con Inteligencia Artificial Controlada:** Aplicación del método **A.T.E.R.R.I.Z.A.** y evaluación de riesgos bajo matriz de 4 dimensiones (Frecuencia, Estabilidad, Riesgo, Mantenimiento) con **Gates Humanos** donde la IA propone y el QA valida.
 
 ---
+## 📚 Evolución del proyecto
+
+El repositorio documenta una evolución progresiva del trabajo de QA Automation:
+
+* **S1–S6:** fundamentos de Playwright, selectores semánticos, asincronía, ejecución de pruebas, diagnóstico basado en evidencia y validación de APIs.
+* **S7:** definición de una estrategia de priorización de automatización basada en Frecuencia, Estabilidad, Riesgo y Mantenimiento.
+* **S8:** organización de criterios QA y creación de reglas y skills reutilizables dentro de `.agents`.
+* **S9:** derivación de casos de prueba a partir de historias de usuario y priorización asistida por IA, verificando las propuestas contra los requisitos y manteniendo el criterio humano como decisión final.
+
+**Principio de trabajo:** la IA propone; QA verifica, decide y documenta.
 
 ## 🛠️ Stack Tecnológico
 
