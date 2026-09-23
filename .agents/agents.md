@@ -56,6 +56,18 @@ Ningún pedido vuelve a pegar este contenido en el chat. Se señala el archivo.
 | **Cuándo pide decisión humana** | siempre que un puntaje dependa de un dato que no está en el repositorio |
 | **Nació en** | C7, empaquetando un procedimiento ejecutado a mano tres veces en la misma clase |
 
+
+## ### `derivar-casos-de-hu` · skill
+
+| | |
+|---|---|
+| **Dónde vive** | `.agents/skills/derivar-casos-de-hu/SKILL.md` |
+| **Qué hace** | recorre una historia de usuario por capas: contexto,reglas, preguntas, riesgos y deriva casos de prueba ordenados por riesgo, cada uno con criterio, requerimiento y fragmento textual|
+| **Qué NO hace** | no firma, no ejectua, no escribe tests y no modifica archivos. El procedimiento vive en la sección 3 y los límites en la sección 4 del SKILL.md|
+| **Qué necesita de entrada** | una historia con criterios de aceptacion identificados; los requerimientos y las notas del equipo, si extisten. |
+| **Dónde deja la salida** | en la conversación, la QA la revisa con los gates y la guarda en docs/casos-funcionalidad.md|
+| **Cuándo pide decisión humana** | ver la seccion 5 del skill.md|
+| **Nació en** | C8, empaquetando como se dirigio a la IA capa por capa sobre el login: los cinco pedidos son los pasos y los gates son limites|
 ---
 
 ## 4. Cómo crece este archivo
