@@ -1,5 +1,28 @@
 # Casos de Prueba — Login
 
+## Historia
+
+**HU-LOG-01 — Inicio de sesión**
+
+**Fuente:** `docs/HU-login.md`
+
+## Preguntas abiertas
+
+### P1 — Nombre del usuario
+¿Cuál es el nombre exacto que debe aparecer en el mensaje de bienvenida después de un login exitoso?
+
+### P2 — Mensaje de error
+¿Cuál es el texto exacto que debe mostrarse cuando se utiliza un email no registrado o una contraseña incorrecta?
+
+### P3 — Campos obligatorios
+¿Qué comportamiento concreto debe ocurrir cuando el email o la contraseña están vacíos?
+
+## Casos
+
+
+
+
+
 | # | Caso                                   | Datos                                                                                                                | Resultado esperado                                                                                                                   | Fuente                                                                                                                                                                                                       | Técnica                                         | Riesgo |
 | - | -------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------- | ------ |
 | 1 | Login exitoso con credenciales válidas | Email: `ana.garcia@ejemplo.com`<br>Contraseña: `Segura2026!`                                                         | Se inicia sesión y se muestra un mensaje de bienvenida con el nombre del usuario. Nombre exacto: **POR CONFIRMAR (P1)**              | CA4 · REQ-L04 · `"Tras un login exitoso, el sistema muestra un mensaje de bienvenida con el nombre del usuario."`                                                                                            | Partición de equivalencia — datos válidos       | Alto   |
