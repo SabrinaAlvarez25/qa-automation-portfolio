@@ -61,3 +61,12 @@
 ---
 
 *Generado por el workflow `generar-y-juzgar` · skill `revisar-con-rubrica` · 2026-09-24*
+
+## El caso de C10
+
+* **Caso elegido:** C01 — Login válido.
+* **Por qué es el primero:** es el primer caso del backlog L1 y permite comprobar el flujo principal de inicio de sesión antes de cubrir escenarios negativos y de bloqueo.
+* **Resultado observable exacto:** `¡Hola, Ana!` y el texto `Has iniciado sesión correctamente.`
+* **Fecha de observación:** 28/09/2026.
+* **Separación entre fuente y observación:** la historia indica que debe mostrarse un mensaje de bienvenida con el nombre del usuario. El texto exacto observado en la ejecución fue `¡Hola, Ana!` y `Has iniciado sesión correctamente.`.
+* **Qué NO demuestra este caso:** no demuestra el comportamiento ante credenciales incorrectas, campos vacíos, los 5 intentos fallidos consecutivos ni el desbloqueo de la cuenta.
