@@ -1,3 +1,7 @@
+---
+trigger: always_on
+---
+
 # Criterio QA — reglas estables de este repositorio
 
 > ## Este archivo llega dado, y llega a medio hacer. A propósito.
@@ -80,3 +84,13 @@ enseña justo lo contrario de lo que dice.
 ---
 
 *Semilla entregada en C7 con cuatro reglas · se cosecha entero en C8.*
+
+Regla
+
+-Si un locator se apoya en la apariencia o la estructura- clase CSS, cadena estructural o XPath-, no entra. En su lugar va getByRole, getByLabel o getByText, getByTestId entra cuando puedo justificarlo y señalar su fuente. Cuando aplica: cualquier test o selector.
+
+-Ningún selector se acepta sin comprobarlo contra el DOM real o ejecutarlo. Una propuesta plausible no es evidencia. Cuando se aplica: cualquier locator, lo proponga una persona o una IA.
+
+-Ninguna espera fija nada de waitForTimeout, sleep ni milisegundos sueltos. Se usan acciones y aserciones con autoespera. Cuando se aplica: cualquier test de Playwright.
+
+
