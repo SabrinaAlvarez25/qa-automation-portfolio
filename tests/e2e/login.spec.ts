@@ -38,6 +38,7 @@ test('C02 · REQ-L02: Login con contraseña incorrecta muestra mensaje de error'
 
   // VERIFICAR
   await expect(page.getByText('Email o contraseña incorrectos')).toBeVisible();
+  await expect(page.getByText('Has iniciado sesión correctamente.')).not.toBeVisible();
 });
 
 /**

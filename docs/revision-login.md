@@ -70,3 +70,17 @@
 * **Fecha de observación:** 28/09/2026.
 * **Separación entre fuente y observación:** la historia indica que debe mostrarse un mensaje de bienvenida con el nombre del usuario. El texto exacto observado en la ejecución fue `¡Hola, Ana!` y `Has iniciado sesión correctamente.`.
 * **Qué NO demuestra este caso:** no demuestra el comportamiento ante credenciales incorrectas, campos vacíos, los 5 intentos fallidos consecutivos ni el desbloqueo de la cuenta.
+
+## 10. Lo que me costó al afirmar sobre el caso negativo (para C11)
+
+* **Qué escribí como verificación:**
+  Verifiqué que, ante una contraseña incorrecta, se muestre el mensaje de error `Email o contraseña incorrectos` y que no aparezca el mensaje de éxito `Has iniciado sesión correctamente.`
+
+* **Qué dio al correr el test negativo:**
+  El test pasó. El mensaje de error fue visible y el mensaje de éxito no apareció.
+
+* **Qué dio al pegarla en el test positivo (la prueba de control):**
+  El test positivo falló. El mensaje de éxito sí estaba visible, por lo que la comprobación de que no estuviera visible no se cumplió. Esto mostró que la verificación distingue el escenario de login fallido del escenario de login exitoso observado.
+
+* **Qué quedé sin saber:**
+  Esta verificación demuestra que en los escenarios observados no aparece el mensaje de éxito cuando las credenciales son incorrectas, pero no demuestra por sí sola todos los posibles comportamientos de un login fallido ni qué ocurre en otros escenarios no probados.
