@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { LoginPage } from '../../pages/login.page';
 
 /**
  * Trazabilidad:
@@ -7,18 +8,18 @@ import { test, expect } from '@playwright/test';
  * - Requerimiento: REQ-L04 / CA4 — Tras un login exitoso, el sistema muestra un mensaje de bienvenida con el nombre del usuario (docs/HU-login.md)
  */
 test('C01 · L1 · REQ-L04: Login válido muestra mensaje de bienvenida', async ({ page }) => {
+  const loginPage = new LoginPage(page);
+
   // PREPARAR
-  await page.goto('/login');
+  await loginPage.goto();
 
   // ACTUAR
-  await page.getByLabel('Email').fill('ana.garcia@ejemplo.com');
-  await page.getByLabel('Contraseña').fill('Segura2026!');
-  await page.getByRole('button', { name: 'Iniciar sesión' }).click();
+  await loginPage.login('ana.garcia@ejemplo.com', 'Segura2026!');
 
   // VERIFICAR
   // Nota: '¡Hola, Ana!' y 'Has iniciado sesión correctamente.' son textos observados en la evidencia de docs/revision-login.md.
   // La HU / REQ-L04 exige que se muestre un mensaje de bienvenida con el nombre del usuario, pero no fija literalmente esa redacción.
-  await expect(page.getByText('¡Hola, Ana!')).toBeVisible();
+  await expect(loginPage.saludo).toBeVisible();
   await expect(page.getByText('Has iniciado sesión correctamente.')).toBeVisible();
 });
 
@@ -28,18 +29,18 @@ test('C01 · L1 · REQ-L04: Login válido muestra mensaje de bienvenida', async 
  * - Requerimiento: REQ-L02 / CA2 — Una contraseña incorrecta muestra un mensaje de error (docs/HU-login.md)
  */
 test('C02 · REQ-L02: Login con contraseña incorrecta muestra mensaje de error', async ({ page }) => {
+  const loginPage = new LoginPage(page);
+
   // PREPARAR
-  await page.goto('/login');
+  await loginPage.goto();
 
   // ACTUAR
-  await page.getByLabel('Email').fill('ana.garcia@ejemplo.com');
-  await page.getByLabel('Contraseña').fill('clave_incorrecta');
-  await page.getByRole('button', { name: 'Iniciar sesión' }).click();
+  await loginPage.login('ana.garcia@ejemplo.com', 'clave_incorrecta');
 
   // VERIFICAR
-  await expect(page.getByText('Email o contraseña incorrectos')).toBeVisible();
+  await expect(loginPage.mensajeError).toBeVisible();
   await expect(page.getByText('Has iniciado sesión correctamente.')).not.toBeVisible();
-  await expect(page.getByRole('button', { name: 'Iniciar sesión' })).toBeVisible();
+  await expect(loginPage.botonIniciarSesion).toBeVisible();
 });
 
 /**
@@ -48,16 +49,16 @@ test('C02 · REQ-L02: Login con contraseña incorrecta muestra mensaje de error'
  * - Requerimiento: REQ-L02 / CA2 — Un email no registrado muestra un mensaje de error (docs/HU-login.md)
  */
 test('C03 · REQ-L02: Login con email no registrado muestra mensaje de error', async ({ page }) => {
+  const loginPage = new LoginPage(page);
+
   // PREPARAR
-  await page.goto('/login');
+  await loginPage.goto();
 
   // ACTUAR
-  await page.getByLabel('Email').fill('noexiste@ejemplo.com');
-  await page.getByLabel('Contraseña').fill('Segura2026!');
-  await page.getByRole('button', { name: 'Iniciar sesión' }).click();
+  await loginPage.login('noexiste@ejemplo.com', 'Segura2026!');
 
   // VERIFICAR
-  await expect(page.getByText('Email o contraseña incorrectos')).toBeVisible();
+  await expect(loginPage.mensajeError).toBeVisible();
 });
 
 /**
@@ -66,16 +67,15 @@ test('C03 · REQ-L02: Login con email no registrado muestra mensaje de error', a
  * - Requerimiento: REQ-L03 / CA3 — Después de 5 intentos fallidos consecutivos, la cuenta se bloquea por 30 segundos, el botón de login debe estar deshabilitado y muestra timer visual (docs/HU-login.md)
  */
 test('C04 · REQ-L03: Quinto intento fallido consecutivo bloquea la cuenta y muestra timer', async ({ page }) => {
+  const loginPage = new LoginPage(page);
+
   // PREPARAR
-  await page.goto('/login');
+  await loginPage.goto();
 
   // ACTUAR
   for (let i = 1; i <= 5; i++) {
-    const submitButton = page.getByRole('button', { name: 'Iniciar sesión' });
-    if (await submitButton.isVisible()) {
-      await page.getByLabel('Email').fill('ana.garcia@ejemplo.com');
-      await page.getByLabel('Contraseña').fill(`clave_erronea_${i}`);
-      await submitButton.click();
+    if (await loginPage.botonIniciarSesion.isVisible()) {
+      await loginPage.login('ana.garcia@ejemplo.com', `clave_erronea_${i}`);
       await page.waitForResponse(res => res.url().includes('/api/login'));
     }
   }
