@@ -96,6 +96,17 @@ Ningún pedido vuelve a pegar este contenido en el chat. Se señala el archivo.
 | **Nació en** | C9, primer workflow del repositorio. Usa `revisar-con-rubrica`. Desde C10 se usa igual cambiando el artefacto a test de Playwright |
 
 ---
+### `diagnosticar-fallo-playwright` · skill
+
+| | |
+|---|---|
+| **Dónde vive** | `.agents/skills/diagnosticar-fallo-playwright/SKILL.md` |
+| **Qué hace** | diagnostica un rojo, un verde sospechoso o un fallo de Playwright, identifica la causa con evidencia de la salida del runner y propone el cambio mínimo |
+| **Qué NO hace** | no agrega esperas fijas, no aumenta timeouts, no fuerza el verde, no inventa expectativas ni decide si el producto está correcto |
+| **Qué necesita de entrada** | el test completo, la salida completa del runner, el comportamiento esperado desde la fuente/REQ/caso y las reglas de `.agents/rules/criterio-qa.md` |
+| **Dónde deja la salida** | en la conversación, con lectura, causa, evidencia, archivo y línea, cambio mínimo y cómo comprobarlo |
+| **Cuándo pide decisión humana** | cuando la evidencia no permite determinar si corresponde cambiar la expectativa, el locator o el comportamiento esperado del producto |
+| **Nació en** | C11, como cuarta skill del repositorio para diagnosticar fallos sin arreglar a ciegas |
 
 ## 4. Cómo crece este archivo
 
@@ -126,3 +137,5 @@ cotidiano**. Si se usa una vez, fue un pedido puntual y no necesita archivo.
 ---
 
 *Semilla entregada en C7 · se completa en C8 · qa-automation-portfolio · Ruta QA Automation con IA*
+
+
