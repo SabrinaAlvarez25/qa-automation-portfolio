@@ -13,7 +13,7 @@ export class LoginPage {
     this.email = page.getByLabel('Email');
     this.contrasena = page.getByLabel('Contraseña');
     this.botonIniciarSesion = page.getByRole('button', { name: 'Iniciar sesión' });
-    this.mensajeError = page.getByText('Email o contraseña incorrectos');
+    this.mensajeError = page.getByTestId('login-error');
     this.saludo = page.getByText('¡Hola, Ana!');
   }
 
