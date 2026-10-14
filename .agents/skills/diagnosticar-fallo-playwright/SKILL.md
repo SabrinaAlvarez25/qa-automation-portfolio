@@ -61,7 +61,7 @@ código es exactamente lo que esta skill existe para evitar.
    | # | Lo que dice la salida | Qué pasó | Qué se revisa |
    |---|---|---|---|
    | 1 | `expect(locator)…` con `Locator:`, `Expected:` **y** `Received:` | el elemento apareció y dice otra cosa | **el producto o la expectativa**: se compara `Expected` con la fuente |
-   | 2 | `expect(locator)…` con `Expected:` y `element(s) not found`, **sin** `Received:` | el elemento no apareció en todo el tiempo de espera | **el locator** contra `docs/mapa-selectores.md`, **o el paso anterior**, que quizás nunca llegó |
+   | 2 | `expect(locator)…` con `Expected:` y `element(s) not found`, **sin** `Received:` | el elemento no apareció en todo el tiempo de espera | el locator en el Page Object correspondiente dentro de `pages/`, usando `docs/mapa-selectores.md` como referencia, o el paso anterior que quizás nunca llegó
    | 3 | `expect(received)…` con `Expected:` y `Received:`, **sin** línea `Locator:` ni `Timeout:` | la aserción juzgó un valor leído **una sola vez**: una foto de un instante | si a `expect` se le pasó un valor ya leído (`isVisible()`, `count()`, `textContent()`) en lugar del locator |
    | 4 | **verde**, y es un caso negativo o una aserción nueva | todavía nada: hay que medir la aserción | la **prueba de control** del paso 5 |
 
@@ -76,9 +76,9 @@ código es exactamente lo que esta skill existe para evitar.
    | Lectura | Cambio mínimo |
    |---|---|
    | 1 | si la fuente respalda el `Received`, se corrige la expectativa; **si la fuente no fija el texto, no se cambia nada: se pide decisión** (sección 6) |
-   | 2 | se corrige el locator según el mapa, o se corrige el paso anterior que no llegó |
+   | 2 | Se corrige el locator en el Page Object correspondiente dentro de `pages/`, usando `docs/mapa-selectores.md` como referencia; o se corrige el paso anterior que no llegó. |
    | 3 | se le pasa a `expect` el **locator**, no el valor: `await expect(page.getByTestId('…')).toBeVisible()` o `.toHaveText('…')`. Así la aserción reintenta sola hasta el timeout |
-   | 4 | se quita o se reemplaza la aserción que no distingue; y se ordena: primero la aserción que espera la respuesta |
+   | 4 | Se quita o se reemplaza la aserción que no distingue; y se ordena: primero la aserción que espera la respuesta. |
 
 5. **Volver a ejecutar, y medir.** Correr de nuevo el mismo comando del paso 1. Si el test es un
    **caso negativo**, cada aserción de su bloque de verificación pasa la **prueba de control**:
@@ -108,7 +108,7 @@ código es exactamente lo que esta skill existe para evitar.
   evidencia.
 - **No decide si el producto está bien.** Dice qué muestra la pantalla; si eso es correcto lo decide
   el negocio.
-- **No toca archivos que no sean el test**, ni el `playwright.config.ts`, ni otros tests.
+-  **No toca archivos que no sean el test ni, por regla general, el `playwright.config.ts` u otros tests.** En la lectura 2, puede corregir el Page Object correspondiente dentro de `pages/` si la evidencia confirma que el locator es la causa. Usa `docs/mapa-selectores.md` como referencia y no modifica ese mapa automáticamente.
 
 ---
 

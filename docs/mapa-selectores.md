@@ -114,6 +114,13 @@ no identifica *el email del login*: identifica *el email de la página que esté
 Hoy le sumamos a lo anterior funciones de Playwright como `getByLabel` y `getByRole`. Por ejemplo,
 `getByLabel('Email')` busca el campo asociado a la etiqueta Email, y
 `getByRole('button', { name: 'Iniciar sesión' })` busca el botón con ese nombre.
+**Nota C13 — Locators con Page Object Model (POM)**
+
+Después de refactorizar los tests de login, los locators de esa pantalla están centralizados en `pages/login.page.ts`, dentro de la clase `LoginPage`.
+
+Este mapa sigue sirviendo para documentar por qué se elige cada locator y qué evidencia respalda esa decisión. Si una ejecución demuestra que un locator debe corregirse, se actualiza en `pages/login.page.ts`, no se duplica su definición en `tests/e2e/login.spec.ts`.
+
+Las aserciones y la verificación del comportamiento permanecen en los tests. La existencia de un locator en el Page Object no demuestra, por sí sola, que el test pase.
 
 ## LEES · Instrucción de refinamiento
 
