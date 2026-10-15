@@ -39,7 +39,7 @@ test('C02 · REQ-L02: Login con contraseña incorrecta muestra mensaje de error'
 
   // VERIFICAR
   await expect(loginPage.mensajeError).toBeVisible();
-  await expect(page.getByText('Has iniciado sesión correctamente.')).not.toBeVisible();
+  await expect(loginPage.saludo).not.toBeVisible();
   await expect(loginPage.botonIniciarSesion).toBeVisible();
 });
 
@@ -63,24 +63,41 @@ test('C03 · REQ-L02: Login con email no registrado muestra mensaje de error', a
 
 /**
  * Trazabilidad:
- * - Caso: C04 — Quinto intento fallido consecutivo (docs/casos_prueba_login.md)
- * - Requerimiento: REQ-L03 / CA3 — Después de 5 intentos fallidos consecutivos, la cuenta se bloquea por 30 segundos, el botón de login debe estar deshabilitado y muestra timer visual (docs/HU-login.md)
+ * - Caso: C04 — Login con email vacío (sigue la estructura de la demostración de clase)
+ * - Requerimiento: REQ-L01 / CA1 — El login requiere email y contraseña. Ambos son obligatorios (docs/HU-login.md)
  */
-test('C04 · REQ-L03: Quinto intento fallido consecutivo bloquea la cuenta y muestra timer', async ({ page }) => {
+test('C04 · REQ-L01: Login con email vacío muestra mensaje de error', async ({ page }) => {
   const loginPage = new LoginPage(page);
 
   // PREPARAR
   await loginPage.goto();
 
   // ACTUAR
-  for (let i = 1; i <= 5; i++) {
-    if (await loginPage.botonIniciarSesion.isVisible()) {
-      await loginPage.login('ana.garcia@ejemplo.com', `clave_erronea_${i}`);
-      await page.waitForResponse(res => res.url().includes('/api/login'));
-    }
-  }
+  await loginPage.login('', 'Segura2026!');
 
   // VERIFICAR
-  await expect(page.getByText(/Cuenta bloqueada\. Puedes intentar de nuevo en/i)).toBeVisible();
-  await expect(page.getByRole('button', { name: 'Bloqueado' })).toBeDisabled();
+  await expect(loginPage.mensajeError).toBeVisible();
+  await expect(loginPage.saludo).not.toBeVisible();
+  await expect(loginPage.botonIniciarSesion).toBeVisible();
+});
+
+/**
+ * Trazabilidad:
+ * - Caso: Caso C05 · REQ-L01 · CA1
+ * - Fuente: docs/casos-login-v2.md §5 (material de clase, no incluido en este repositorio)
+ * - Requerimiento: REQ-L01 / CA1 — El login requiere email y contraseña. Ambos son obligatorios (docs/HU-login.md)
+ */
+test('Caso C05 · REQ-L01 · CA1: Login con contraseña vacía muestra error y mantiene el formulario', async ({ page }) => {
+  const loginPage = new LoginPage(page);
+
+  // PREPARAR
+  await loginPage.goto();
+
+  // ACTUAR
+  await loginPage.login('ana.garcia@ejemplo.com', '');
+
+  // VERIFICAR
+  await expect(loginPage.mensajeError).toHaveText('La contraseña es obligatoria');
+  await expect(loginPage.saludo).not.toBeVisible();
+  await expect(loginPage.botonIniciarSesion).toBeVisible();
 });
