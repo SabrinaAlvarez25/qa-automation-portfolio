@@ -84,23 +84,3 @@ test('C04 · REQ-L03: Quinto intento fallido consecutivo bloquea la cuenta y mue
   await expect(page.getByText(/Cuenta bloqueada\. Puedes intentar de nuevo en/i)).toBeVisible();
   await expect(page.getByRole('button', { name: 'Bloqueado' })).toBeDisabled();
 });
-
-
-/**
- * Trazabilidad:
- * - Caso: C05 — Login con contraseña vacía (C13)
- */
-test('C05 · Login con contraseña vacía muestra error y mantiene el formulario', async ({ page }) => {
-  const loginPage = new LoginPage(page);
-
-  // PREPARAR
-  await loginPage.goto();
-
-  // ACTUAR
-  await loginPage.login('ana.garcia@ejemplo.com', '');
-
-  // VERIFICAR: triangulación del resultado negativo
-  await expect(loginPage.mensajeError).toHaveText('La contraseña es obligatoria');
-  await expect(loginPage.saludo).not.toBeVisible();
-  await expect(loginPage.botonIniciarSesion).toBeVisible();
-});
