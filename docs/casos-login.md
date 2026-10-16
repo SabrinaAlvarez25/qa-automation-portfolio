@@ -164,3 +164,58 @@ RG9 → 6 · RG10 → 1.
 
 *Producido en C8 dirigiendo a la IA capa por capa y auditado en el gate de cada capa ·
 qa-automation-portfolio · Ruta QA Automation con IA*
+
+---
+
+## Registro del ejercicio C13 — Page Object Model (POM), fixtures y parametrización
+
+### Parte 2 — Refactorización con Page Object Model
+
+Se creó `pages/login.page.ts` para centralizar los selectores y las acciones de la pantalla de login.
+
+Antes de la refactorización, los tests preparaban la pantalla directamente. Después, esa responsabilidad quedó organizada en `LoginPage`.
+
+### Parte 3 — Fixture de login
+
+Se creó `tests/fixtures.ts` para compartir la preparación de los tests.
+
+La fixture:
+
+- Crea una instancia nueva de `LoginPage` para cada test.
+- Ejecuta `loginPage.goto()` para abrir `/login`.
+- Entrega `loginPage` al test mediante la fixture personalizada.
+
+Los tests importan `test` y `expect` desde `../fixtures`.
+
+**Resultado:** los tests ya no necesitan repetir la creación de `LoginPage` ni la navegación inicial.
+
+### Parte 4 — Parametrización de los casos negativos
+
+Los casos C02, C03, C04 y C05 se organizaron mediante una tabla de datos y un recorrido común.
+
+- **C01:** permanece separado porque verifica el resultado positivo del login.
+- **C02–C05:** comparten la estructura de ejecución y las verificaciones negativas.
+- Cada fila conserva los datos correspondientes a su caso.
+
+### Parte 5 — Skill para crear fixtures
+
+Se incorporó la skill:
+
+`.agents/skills/crear-fixture-playwright/SKILL.md`
+
+La skill indica que, antes de crear una fixture, se debe revisar la preparación repetida en los tests y proponer un plan. Si una fixture ya resuelve esa preparación, se debe explicar lo encontrado y detenerse, sin duplicarla.
+
+Se ejecutó la revisión con Antigravity. La herramienta confirmó que `tests/fixtures.ts` ya resuelve la preparación compartida y no modificó archivos.
+
+**Commit:** `2fb9368` — `docs: add Playwright fixture skill`
+
+La skill quedó subida a GitHub en la rama `master`.
+
+### Estado al cerrar C13
+
+- Page Object Model implementado.
+- Fixture compartida implementada.
+- Casos negativos C02–C05 parametrizados.
+- Skill `crear-fixture-playwright` incorporada al repositorio.
+- Los cinco tests de login y la comprobación de TypeScript ya habían pasado en las ejecuciones anteriores.
+
