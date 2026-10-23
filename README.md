@@ -143,14 +143,15 @@ A diferencia de las pruebas de SauceDemo, este flujo se construye a partir de:
 
 ### Login — Casos automatizados actualmente
 
-Actualmente se encuentran automatizados los primeros cuatro casos seleccionados del flujo de Login:
+Actualmente se encuentran automatizados los primeros cinco casos seleccionados del flujo de Login:
 
-| Caso    | Descripción                                                             | Requerimiento |
-| :------ | :---------------------------------------------------------------------- | :------------ |
-| **C01** | Login válido muestra mensaje de bienvenida                              | REQ-L04       |
-| **C02** | Contraseña incorrecta muestra mensaje de error                          | REQ-L02       |
-| **C03** | Email no registrado muestra mensaje de error                            | REQ-L02       |
-| **C04** | Quinto intento fallido consecutivo bloquea la cuenta y muestra el timer | REQ-L03       |
+| Caso    | Descripción                                                  | Requerimiento |
+| :------ | :----------------------------------------------------------- | :------------ |
+| **C01** | Login válido muestra mensaje de bienvenida                   | REQ-L04       |
+| **C02** | Contraseña incorrecta muestra mensaje de error               | REQ-L02       |
+| **C03** | Email no registrado muestra mensaje de error                 | REQ-L02       |
+| **C04** | Login con email vacío muestra mensaje de error               | REQ-L01       |
+| **C05** | Login con contraseña vacía muestra error y mantiene el formulario | REQ-L01       |
 
 ### Trazabilidad
 
