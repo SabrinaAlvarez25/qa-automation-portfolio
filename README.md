@@ -194,10 +194,10 @@ VERIFICAR
 
 ### Ejecución actual
 
-Los cuatro casos automatizados de Login se ejecutan correctamente:
+Los cinco casos automatizados de Login se ejecutan correctamente:
 
 ```text
-4 passed
+5 passed (11.2s)  
 ```
 
 Comando utilizado:
