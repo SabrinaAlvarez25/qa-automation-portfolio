@@ -7,6 +7,9 @@ export class LoginPage {
   readonly botonIniciarSesion: Locator;
   readonly mensajeError: Locator;
   readonly saludo: Locator;
+  readonly avisoBloqueo: Locator;
+  readonly botonBloqueo: Locator;
+
 
   constructor(page: Page) {
     this.page = page;
@@ -15,6 +18,9 @@ export class LoginPage {
     this.botonIniciarSesion = page.getByRole('button', { name: 'Iniciar sesión' });
     this.mensajeError = page.getByTestId('login-error');
     this.saludo = page.getByText('¡Hola, Ana!');
+    this.avisoBloqueo = page.getByTestId('login-error');
+    this.botonBloqueo = page.getByTestId('login-button');
+
   }
 
   async goto() {
