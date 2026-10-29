@@ -150,6 +150,9 @@ Comparada con la instrucción de S3 cambió una cosa y se agregó otra:
 | Campo email | | | | |
 | Campo contraseña | | | | |
 | Botón Iniciar sesión | | | | |
+| Campo Nombre completo | `#name` | `page.getByLabel('Nombre completo')` | `2 passed (6.9s)` en `tests/e2e/registro.spec.ts` | Se elige `getByLabel` porque identifica el campo por su etiqueta visible vinculada (`for="name"`). Límite: fallará si se modifica el texto del label o se desvincula el atributo `for`. |
+| Campo Edad | `#age` | `page.getByLabel('Edad')` | `2 passed (6.9s)` en `tests/e2e/registro.spec.ts` | Se elige `getByLabel` porque busca la etiqueta visible que reconoce la persona usuaria (`for="age"`). Límite: fallará si cambia la etiqueta o si se elimina la asociación con el `<input>`. |
+| Botón Crear cuenta | `button[type="submit"]` | `page.getByRole('button', { name: 'Crear cuenta' })` | `2 passed (6.9s)` en `tests/e2e/registro.spec.ts` | Se elige `getByRole` porque comprueba tanto el rol accesible (`button`) como su texto visible ("Crear cuenta"). Límite: fallará si cambia el texto del botón o si se implementa como un enlace o `div` sin rol accesible. |
 | Caso donde conservamos CSS o test id (opcional) | | No aplica | | |
 
 La última fila es opcional. Complétala solo si encuentras un caso real donde el elemento no tiene una
