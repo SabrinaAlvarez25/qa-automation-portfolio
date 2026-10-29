@@ -108,6 +108,36 @@ Ningún pedido vuelve a pegar este contenido en el chat. Se señala el archivo.
 | **Cuándo pide decisión humana** | cuando la evidencia no permite determinar si corresponde cambiar la expectativa, el locator o el comportamiento esperado del producto |
 | **Nació en** | C11, como cuarta skill del repositorio para diagnosticar fallos sin arreglar a ciegas |
 
+### `crear-fixture-playwright` · skill
+
+| | |
+|---|---|
+| **Dónde vive** | `.agents/skills/crear-fixture-playwright/SKILL.md` |
+| **Qué hace** |lee tests reales, identifica preparación común y propone una fixture antes de editar |
+| **Qué NO hace** | no cambia casos, REQ, títulos, datos ni aserciones; no duplica fixtures ni ejecuta tests sin petición |
+| **Qué necesita de entrada** |tests, Page Objects y fixtures utilizados, instrucciones del proyecto y alcance |
+| **Dónde deja la salida** | en la conversación: preparación encontrada y plan; tras aprobación, diff y comprobaciones|
+| **Cuándo pide decisión humana** | antes de editar, ante entradas faltantes o cambios de alcance|
+| **Nació en** |C13, después de extraer a mano la preparación común del login |
+
+### `generar-pom` · skill
+
+| | |
+|---|---|
+| **Dónde vive** | `.agents/skills/generar-pom/SKILL.md` |
+| **Qué hace** |completa un page object desde el HTML real, el test y su fixture; lo verifica con una rúbrica de cuatro criterios y ejecutando el test; deja la evidencia en reports/pom-agent-report.md |
+| **Qué NO hace** |no toca el test, la fixture ni otros archivos; no borra lo que el page object ya exponía; no inventa la ruta; no escribe ACEPTADO |
+| **Nació en** |C14. La primera capacidad del repositorio que escribe un archivo de código |
+
+### `@pom-agent` · agente
+
+| | |
+|---|---|
+| **Dónde vive** | `.agents/workflows/pom-agent.md`´,que se invoca como /pom-agent |
+| **Qué hace** |usa generar-pom, lee la evidencia y decide solo si para, corrige o escala, hasta 3 intentos|
+| **Qué entrega** |CANDIDATO o ESCALADO. Nunca ACEPTADO: esa decisión es de la QA    |
+| **Nació en** |C14. El primer agente del repositorio |
+
 ## 4. Cómo crece este archivo
 
 Se agregan filas; no se borran las anteriores. Lo previsto en la ruta:
