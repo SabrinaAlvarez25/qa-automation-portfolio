@@ -22,6 +22,6 @@ test('C09 · C10 · REQ-L03 · con el servidor simulado en 429, la pantalla desh
 
     // VERIFICAR · lo que la pantalla hace con esa respuesta
     await expect(loginPage.avisoBloqueo).toContainText('Puedes intentar de nuevo en');
-    await expect(loginPage.botonBloqueado).toBeDisabled();
+    await expect(loginPage.botonBloqueo).toBeDisabled();
     await expect(loginPage.saludo).not.toBeVisible();
 });
