@@ -18,8 +18,8 @@ export class LoginPage {
     this.botonIniciarSesion = page.getByRole('button', { name: 'Iniciar sesión' });
     this.mensajeError = page.getByTestId('login-error');
     this.saludo = page.getByText('¡Hola, Ana!');
-    this.avisoBloqueo = page.getByTestId('login-error');
-    this.botonBloqueo = page.getByTestId('login-button');
+    this.avisoBloqueo = page.getByTestId('login-lockout');
+    this.botonBloqueo = page.getByRole('button', { name: 'Bloqueado' });
 
   }
 
