@@ -42,6 +42,7 @@
 | GET | `/api/courses` | **observación en Network** — REQ-C01 define qué muestra el catálogo, no el endpoint que lo alimenta | listar cursos con cupos y prerequisitos |
 | GET | `/api/auth/me` | **observación en Network** — no está documentado | quién es la sesión actual |
 | GET | `/api/progress` | **observación en Network** — no está documentado | inscripciones y progreso |
+| GET | `/api/students` | **observación en Network** — 2026-08-18. REQ-N01 a N03 describen la pantalla `/estudiantes`, no el endpoint | listado paginado de estudiantes; acepta `?page=` y `?pageSize=` |
 
 > **Ya hay una lección acá.** De los cinco endpoints que existen, **la documentación nombra dos**.
 > Los otros tres aparecieron mirando la pestaña Network mientras alguien usaba la aplicación. Un
@@ -142,6 +143,36 @@ reducirse en 1."*
 
 ---
 
+## 3-bis. GET /api/students — agregado en C16
+
+> **Esta sección la escribió QA, no el producto.** El endpoint no está documentado: apareció en
+> Network mientras alguien usaba `/estudiantes`, siguiendo el procedimiento de la §8. Por eso todo
+> lo de acá lleva fecha y se lee como **observación**, no como promesa.
+
+| | |
+|---|---|
+| Ruta observada | `GET /api/students?page=1&pageSize=10` |
+| Status observado | `200` — 2026-08-18 y 2026-10-02 |
+| Qué devuelve | `{"page":N,"pageSize":N,"total":N,"totalPages":N,"items":[{"id","name","cohort"}]}` |
+| ¿Necesita sesión? | **no.** `/estudiantes` es una pantalla pública |
+| REQ que lo respaldan | REQ-N01, REQ-N02 y REQ-N03 describen **la pantalla**, no el endpoint |
+
+**Los tres requerimientos, textuales** (documentación · sección 8 · *Listado paginado de
+estudiantes* · `/estudiantes`):
+
+- **REQ-N01** — *"El listado muestra a los estudiantes paginados, 10 por página."*
+- **REQ-N02** — *"El total de páginas es `ceil(total / pageSize)`. Con 25 estudiantes y 10 por página
+  son 3 páginas; ningún estudiante debe quedar inalcanzable."*
+- **REQ-N03** — *"Cada página muestra exactamente `pageSize` registros distintos. La página 1 empieza
+  en el primer registro y ningún registro se repite entre páginas."*
+
+> **Cuidado con lo que se puede concluir.** Los tres REQ hablan de la pantalla. Que la API y la
+> pantalla coincidan hoy es una observación; que **deban** coincidir se apoya en que la pantalla se
+> alimenta de este endpoint, y eso también es una observación. Cuando alguien pueda definirlo, se
+> escribe acá y deja de ser observación.
+
+---
+
 ## 4. Discrepancias observadas
 
 > **Esta sección la escribes tú.** El resto de este archivo llegó escrito.
@@ -173,6 +204,9 @@ regla completa; registra el caso, la fecha y el resultado.
 | 3 | `POST /api/enroll` con `{"courseId":"no-existe"}` | `404` — Curso no encontrado · REQ-A03 | `500 Internal Server Error` | `curl` | `2026-09-16` |
 | 4 | `POST /api/enroll` con `{"courseId":"api-testing"}` | `200` — lista de espera · REQ-A03 · REQ-C02 | `500 Internal Server Error` | `curl` | `2026-09-16` |
 | 5 | `POST /api/enroll` con `{"courseId":"playwright-cero"}` | `403` — rechazo por prerequisito pendiente · REQ-A03 · REQ-C03 · REQ-C06 | `500 Internal Server Error` | `curl` | `2026-09-16` |
+| | `GET /api/students?page=1&pageSize=10` | REQ-N01: *"10 por página"* · REQ-N03: *"exactamente `pageSize` registros distintos"* | `items.length === 11` | Playwright · `toHaveLength(10)` → recibió 11 | `2026-11-12` |
+| | `GET /api/students?page=1&pageSize=10` | REQ-N02: *"el total de páginas es `ceil(total/pageSize)`… ningún estudiante debe quedar inalcanzable"* | `totalPages: 2` con `total: 25` y `pageSize: 10`. La UI dice **"página 1 de 2"**. `?page=3` sí devuelve los ids 21 a 25 | Playwright + navegador | `2026-11-12` |
+| | `GET /api/students` páginas 1 y 2 | REQ-N03: *"ningún registro se repite entre páginas"* | **`id: 11` (Karen Ávila)** aparece en las dos | curl a `?page=1` y `?page=2` | `2026-11-12` |
 
 
 **Formato de una fila bien escrita** — es un ejemplo, no es tu hallazgo:
@@ -200,6 +234,9 @@ citada con número · fecha.** Ninguna de las cinco es opinión.
 - `POST /api/enroll` sin sesión/cookie: el contrato no define si este endpoint requiere autenticación ni qué status debería devolver. Al ejecutarlo el 2026-09-16 con `curl`, el producto respondió `500 Internal Server Error`. **Incógnita:** comportamiento de autenticación no definido en el contrato.
 -- `GET /api/enroll`: el contrato documenta `POST /api/enroll`, pero no define qué debería responder ante un método no documentado. Al ejecutarlo el 2026-09-16 con `curl`, el producto respondió `405 Method Not Allowed`. **Incógnita:** comportamiento ante un método HTTP no documentado.
 -- `POST /api/enroll` con JSON mal formado: el contrato indica que el endpoint recibe un body JSON, pero no define qué debería responder ante un JSON inválido. Al ejecutarlo el 2026-09-16 con `curl`, el producto respondió `500 Internal Server Error`. **Incógnita:** comportamiento ante un body JSON mal formado.
+- **`GET /api/students` no está documentado como endpoint.** REQ-N01 a N03 describen la pantalla. Que
+  la API y la pantalla deban coincidir es una conclusión razonable, no una promesa escrita.
+  `INCÓGNITA` — y es la pregunta que más conviene llevar a quien pueda contestarla.
 
 Si te cuesta arrancar, estas preguntas suelen destapar algo:
 

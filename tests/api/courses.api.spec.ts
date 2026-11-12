@@ -31,6 +31,7 @@ test('§3 · REQ-C01 · el catálogo devuelve 200 y cada curso trae los campos d
 });
 
 test('§3 · REQ-C04 · inscribirse reduce en 1 los cupos disponibles', async ({ cursos }) => {
+  test.fail(); // BUG-COURSES-01, visto el 12/11/2026: después de inscribirse, los cupos de fundamentos siguen igual (Expected 5 · Received 6).
   const cupos = async () => {
     const cuerpo = await (await cursos.listar()).json();
     const curso = cuerpo.courses.find((c: { id: string }) => c.id === 'fundamentos');

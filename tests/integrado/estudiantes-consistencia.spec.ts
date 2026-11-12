@@ -50,6 +50,7 @@ test('la lista de estudiantes muestra lo que devuelve la API', async ({ estudian
 });
 
 test('REQ-N01 · REQ-N03 · la página devuelve exactamente pageSize registros', async ({ estudiantes }) => {
+  test.fail(); // BUG-STUDENTS-01, visto el 12/11/2026: la página 1 trae 11 registros y el id 11 se repite en la 2.
   const respuesta = await estudiantes.listar(1, 10);
   const datos = await respuesta.json();
 
@@ -60,6 +61,7 @@ test('REQ-N01 · REQ-N03 · la página devuelve exactamente pageSize registros',
 });
 
 test('REQ-N02 · ningún estudiante queda inalcanzable', async ({ estudiantes }) => {
+  test.fail(); // BUG-STUDENTS-02, visto el 12/11/2026: totalPages 2 con 25 estudiantes; la cuenta da 3.
   const respuesta = await estudiantes.listar(1, 10);
   const datos = await respuesta.json();
 

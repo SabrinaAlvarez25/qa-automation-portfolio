@@ -138,6 +138,24 @@ Ningún pedido vuelve a pegar este contenido en el chat. Se señala el archivo.
 | **Qué entrega** |CANDIDATO o ESCALADO. Nunca ACEPTADO: esa decisión es de la QA    |
 | **Nació en** |C14. El primer agente del repositorio |
 
+### `generar-tests-api` · skill
+
+| | |
+|---|---|
+| **Dónde vive** | `.agents/skills/generar-tests-api/SKILL.md` |
+| **Qué hace** | convierte filas de `docs/contrato-api.md` en tests de API con su REQ citado, los ejecuta y clasifica cada fallo |
+| **Qué NO hace** | no inventa rutas, status ni campos; no corrige un fallo que no sea del test; no marca `test.fail()`; no toca el contrato |
+| **Nació en** | C16. La octava skill del repositorio |
+
+### `@api-agent` · agente
+
+| | |
+|---|---|
+| **Dónde vive** | `.agents/workflows/api-agent.md`, que se invoca como `/api-agent` |
+| **Qué hace** | usa `generar-tests-api`: propone un plan trazable, espera `PLAN APROBADO`, escribe, ejecuta, clasifica y decide si para, corrige o escala, hasta 3 intentos |
+| **Qué entrega** | `CANDIDATO`, `CANDIDATO CON HALLAZGOS` o `ESCALADO`. Nunca `ACEPTADO` |
+| **Nació en** | C16. El segundo agente del repositorio |
+
 ## 4. Cómo crece este archivo
 
 Se agregan filas; no se borran las anteriores. Lo previsto en la ruta:
@@ -163,6 +181,8 @@ cotidiano**. Si se usa una vez, fue un pedido puntual y no necesita archivo.
 - **No hay subagentes.** Se usan cuando el trabajo es divisible de verdad o cuando hacen falta
   miradas independientes que después alguien reconcilia. Todavía no es el caso.
 - **El criterio no está acá.** Se puede escribir el procedimiento; no se puede escribir la firma.
+- **Desde C16 son dos:** `@pom-agent` y `@api-agent`. Los dos entregan candidatos; la aceptación
+  sigue siendo de la QA.
 
 ---
 
