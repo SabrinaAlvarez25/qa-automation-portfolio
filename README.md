@@ -68,7 +68,10 @@ qa-automation-portfolio/
 │   │   ├── derivar-casos-de-hu/
 │   │   ├── diagnosticar-fallo-playwright/
 │   │   ├── generar-pom/
+│   │   ├── generar-tests-api/
+│   │   ├── generar-workflow-ci/
 │   │   ├── priorizar-automatizacion/
+│   │   ├── reportar-bug/
 │   │   └── revisar-con-rubrica/
 │   └── workflows/
 │       ├── generar-y-juzgar.md
@@ -392,6 +395,9 @@ Entre ellos:
 | `skills/crear-fixture-playwright` | Crear fixtures reutilizables |
 | `skills/diagnosticar-fallo-playwright` | Leer un fallo, proponer la corrección y parar (la aplica QA) |
 | `skills/generar-pom` | Generar y verificar un Page Object desde evidencia HTML |
+| `skills/reportar-bug` | Redactar reportes de bug desde evidencia y una fuente; separa bugs de hallazgos sin fuente y no decide la severidad |
+| `skills/generar-tests-api` | Convertir filas de `docs/contrato-api.md` en tests de API trazables, ejecutarlos y clasificar cada fallo |
+| `skills/generar-workflow-ci` | Proponer el workflow de GitHub Actions que corre la suite; solo lo escribe con `PLAN APROBADO` |
 | `workflows/generar-y-juzgar.md` | Juzgar un archivo de casos con `revisar-con-rubrica` y registrar las decisiones de QA |
 | `workflows/pom-agent.md` | Recorrido de `@pom-agent`: hasta 3 intentos, entrega CANDIDATO o ESCALADO |
 | `rules/criterio-qa.md` | Reglas de criterio QA que respetan todas las skills |
